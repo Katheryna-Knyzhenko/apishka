@@ -8,6 +8,21 @@ class ApishkaMainCode extends Component {
   }
 
   render() {
+    const axios = require('axios');
+    function getTasks () {
+      const promise = axios.get(`https://repetitora.net/api/JS/Tasks?widgetId=7737&count=6`);
+
+      return promise.then((response) => {return response.data});
+    }
+    function createTasks (title) {
+      const promise = axios.post(`https://repetitora.net/api/JS/Tasks`, {
+        widgetId:7737,
+        title:title
+      });
+
+      return promise.then((response) => {
+        return response.data});
+    }
     return (
         <div className='wapper'>
           <div className='wrap'>
