@@ -16,15 +16,10 @@ class ApishkaMainCode extends Component {
     this.setState({
       createOne: !this.state.createOne
     })
+    alert('jjj')
   };
 
   render() {
-
-    if (this.state.createOne === true) {
-      this.setState({createOne: !this.state.createOne})
-      return alert('правда');
-    }
-
 
     return (
         <div className='wapper'>
