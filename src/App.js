@@ -16,7 +16,7 @@ class ApishkaMainCode extends Component {
     this.setState({
       createOne: !this.state.createOne
     })
-    alert('jjj')
+    createTask('First taska')
   };
 
   render() {
