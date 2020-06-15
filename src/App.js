@@ -11,12 +11,19 @@ class ApishkaMainCode extends Component {
       createOne: false
     };
     this.createNewTask = this.createNewTask.bind(this);
+    this.getNewTask = this.getNewTask.bind(this);
   }
   createNewTask = () => {
     this.setState({
       createOne: !this.state.createOne
-    })
+    });
     createTask('First taska')
+  };
+  getNewTask = () => {
+    this.setState({
+      getNewTask: !this.state.getNewTask
+    });
+    getTasks()
   };
 
   render() {
@@ -30,7 +37,7 @@ class ApishkaMainCode extends Component {
               <button className='createTask' onClick={this.createNewTask}>Create task</button>
               </div>
               <div className='divWithButtonCetTask'>
-              <button className='getTask'>Get task</button>
+              <button className='getTask' onClick={this.getNewTask}>Get task</button>
             </div>
               <div className='divWithButtonDeleteTask'>
                 <button className='deleteTask'>Delete task</button>
