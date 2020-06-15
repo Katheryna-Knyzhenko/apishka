@@ -33,9 +33,9 @@ class ApishkaMainCode extends Component {
     });
     deleteTask('29588e06-42bd-40ff-b885-9698f663770c')
   };
-//   tasks.forEach(task => {
-//   deleteTask(task.id)
-// })
+  // tasks.map(function(task) {
+  //   return  deleteTask(task.id)
+  // })
   render() {
 
     return (
