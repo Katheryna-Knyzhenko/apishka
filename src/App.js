@@ -31,6 +31,12 @@ class ApishkaMainCode extends Component {
               <div className='divWithButtonCreateTask'>
               <button className='createTask'>Create task</button>
               </div>
+              <div className='divWithButtonCetTask'>
+              <button className='getTask'>Get task</button>
+            </div>
+              <div className='divWithButtonDeleteTask'>
+                <button className='deleteTask'>Delete task</button>
+              </div>
             </div>
           </div>
 

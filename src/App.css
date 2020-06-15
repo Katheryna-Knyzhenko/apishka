@@ -14,9 +14,14 @@
 .mainCode {
     min-height: 70vh;
     margin: 2em;
+    display: flex;
+    justify-content: space-between;
 }
-.divWithButtonCreateTask {
+.divWithButtonCreateTask , .divWithButtonCetTask , .divWithButtonDeleteTask  {
     margin: 3em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
 }
 .createTask {
     color: darkslategray;
