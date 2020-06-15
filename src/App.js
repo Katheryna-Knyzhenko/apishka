@@ -9,19 +9,17 @@ class ApishkaMainCode extends Component {
       deleteOneTask: false,
       getNewTask: false,
       createOne: false
-    }
+    };
     this.createNewTask = this.createNewTask.bind(this);
   }
+  createNewTask = () => {
+    this.setState({
+      createOne: !this.state.createOne
+    })
+  };
 
-    createNewTask () {
-
-}
   render() {
-    this.createNewTask = () => {
-      this.setState({
-        createOne: !this.state.createOne
-      })
-    };
+
     if (this.state.createOne === true) {
       this.setState({createOne: !this.state.createOne})
       return alert('правда');
