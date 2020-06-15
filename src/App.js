@@ -27,13 +27,15 @@ class ApishkaMainCode extends Component {
     });
     getTasks()
   };
-  deleteTaskButton = () => {
+  deleteTaskButton = (tasks) => {
     this.setState({
       deleteOneTask: !this.state.deleteOneTask
     });
     deleteTask('29588e06-42bd-40ff-b885-9698f663770c')
   };
-
+//   tasks.forEach(task => {
+//   deleteTask(task.id)
+// })
   render() {
 
     return (
