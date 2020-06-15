@@ -1,35 +1,40 @@
 import React, {Component} from 'react';
 import './App.css';
+import {createTask, deleteTask, getTasks} from './apiFile';
 
 class ApishkaMainCode extends Component {
-  constructor() {
-    super();
-    this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      deleteOneTask: false,
+      getNewTask: false,
+      createOne: false
+    }
+    this.createNewTask = this.createNewTask.bind(this);
   }
 
+    createNewTask () {
+
+}
   render() {
-    const axios = require('axios');
-    function getTasks () {
-      const promise = axios.get(`https://repetitora.net/api/JS/Tasks?widgetId=7737&count=6`);
-
-      return promise.then((response) => {return response.data});
+    this.createNewTask = () => {
+      this.setState({
+        createOne: !this.state.createOne
+      })
+    };
+    if (this.state.createOne === true) {
+      this.setState({createOne: !this.state.createOne})
+      return alert('правда');
     }
-    function createTasks (title) {
-      const promise = axios.post(`https://repetitora.net/api/JS/Tasks`, {
-        widgetId:7737,
-        title:title
-      });
 
-      return promise.then((response) => {
-        return response.data});
-    }
+
     return (
         <div className='wapper'>
           <div className='wrap'>
             <div className= 'hiHeader'>Ну привет, Женя!</div>
             <div className= 'mainCode'>
               <div className='divWithButtonCreateTask'>
-              <button className='createTask'>Create task</button>
+              <button className='createTask' onClick={this.createNewTask}>Create task</button>
               </div>
               <div className='divWithButtonCetTask'>
               <button className='getTask'>Get task</button>
