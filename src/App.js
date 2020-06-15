@@ -12,7 +12,9 @@ class ApishkaMainCode extends Component {
     };
     this.createNewTask = this.createNewTask.bind(this);
     this.getNewTask = this.getNewTask.bind(this);
+    this.deleteTaskButton = this.deleteTaskButton.bind(this);
   }
+
   createNewTask = () => {
     this.setState({
       createOne: !this.state.createOne
@@ -24,6 +26,12 @@ class ApishkaMainCode extends Component {
       getNewTask: !this.state.getNewTask
     });
     getTasks()
+  };
+  deleteTaskButton = () => {
+    this.setState({
+      deleteOneTask: !this.state.deleteOneTask
+    });
+    deleteTask('29588e06-42bd-40ff-b885-9698f663770c')
   };
 
   render() {
@@ -40,7 +48,7 @@ class ApishkaMainCode extends Component {
               <button className='getTask' onClick={this.getNewTask}>Get task</button>
             </div>
               <div className='divWithButtonDeleteTask'>
-                <button className='deleteTask'>Delete task</button>
+                <button className='deleteTask' onClick={this.deleteTaskButton}>Delete task</button>
               </div>
             </div>
           </div>
