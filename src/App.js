@@ -23,7 +23,7 @@ class ApishkaMainCode extends Component {
 
   };
   getNewTask = () => {
-    const promiseGet = this.setState({
+     this.setState({
       getNewTask: getTasks()
       .then(() => function onTasksRecieved(tasks) {
         tasks.forEach(task => {
