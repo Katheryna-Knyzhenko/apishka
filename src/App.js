@@ -17,14 +17,23 @@ class ApishkaMainCode extends Component {
 
   createNewTask = () => {
     this.setState({
-      createOne: createTask('First taska')
+      createOne: createTask('First taska').createNewTask
+
     });
 
   };
   getNewTask = () => {
-    this.setState({
+    const promiseGet = this.setState({
       getNewTask: getTasks()
-    });
+    })
+  promiseGet.then(() => function onTasksRecieved(tasks) {
+    tasks.forEach(task => {
+      const li = document.createElement('li');
+      li.innerHTML = `${task.title}        ${task.id}`;
+      li.id = task.id;
+      document.body.appendChild(li)
+    })
+    })
 
   };
   // deleteTaskButton = (tasks) => {
