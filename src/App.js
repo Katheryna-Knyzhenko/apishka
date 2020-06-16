@@ -38,9 +38,9 @@ class ApishkaMainCode extends Component {
             const li = document.createElement('li');
             li.innerHTML = `${task.title}        ${task.id}`;
             li.id = task.id;
-            document.body.appendChild(li);
+            document.getElementById('testDiv').appendChild(li);
         })
-      alert(tasks)}
+     }
       const promise = new Promise( function (resolve, reject) {
         resolve(getTasks())
       })
@@ -74,7 +74,7 @@ class ApishkaMainCode extends Component {
               <div className='divWithButtonDeleteTask'>
                 <button className='deleteTask' onClick={this.deleteTaskButton}>Delete task</button>
               </div>
-              <div className='divWithButtonTest'>
+              <div className='divWithButtonTest' id='testDiv'>
                 <button className='testButton' onClick={this.testButton}>Test</button>
               </div>
             </div>
