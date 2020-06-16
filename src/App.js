@@ -34,6 +34,8 @@ class ApishkaMainCode extends Component {
             const buttonDelete = document.createElement('button');
             buttonDelete.innerHTML = 'delete task';
             buttonDelete.id = 'delete-task';
+            buttonDelete.style.marginLeft = '2em';
+            buttonDelete.style.marginTop = '2em';
             buttonDelete.addEventListener('click', () => { deleteTask(task.id); li.remove()} );
             li.appendChild(buttonDelete);
         })
