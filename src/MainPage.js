@@ -12,21 +12,21 @@ class MainPage extends Component {
         this.showTasksList = this.showTasksList.bind(this)
         // this.getNewTask = this.getNewTask.bind(this);
     }
-     showTasksList (tasks) {
+     showTasksList (tasks)  {
         alert('код кривой')
-        // tasks.forEach(task => {
-        //     const li = document.createElement('li');
-        //     li.innerHTML = `${task.title}        ${task.id}`;
-        //     li.id = task.id;
-        //     document.getElementById('getTaskDiv').appendChild(li);
-        // })
+        tasks.forEach(task => {
+            const li = document.createElement('li');
+            li.innerHTML = `${task.title}        ${task.id}`;
+            li.id = task.id;
+            document.getElementById('getTaskDiv').appendChild(li);
+        })
     }
 
     createNewTask () {
         createTask('My new task')
             .then(() => getTasks())
             .then((response) => {this.setState({tasks: response})})
-            .then((tasks) => {this.showTasksList(tasks)})
+            .then(() => {this.showTasksList(this.props.tasks)})
     }
 
     render () {
