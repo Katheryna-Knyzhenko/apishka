@@ -32,7 +32,9 @@ class ApishkaMainCode extends Component {
           li.id = task.id;
           document.body.appendChild(li)
         })
+        onTasksRecieved(tasks);
       })
+
     });
 
 
