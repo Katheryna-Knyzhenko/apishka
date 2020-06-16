@@ -16,12 +16,16 @@
     margin: 2em;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
-.divWithButtonCreateTask , .divWithButtonGetTask,  #getTaskDiv  {
+.divWithSomeInfo , .divWithButtonGetTask,  #getTaskDiv  {
     margin: 3em;
     display: flex;
     flex-wrap: wrap;
     flex-flow: column;
+    width: 20%;
+    color: darkslategray;
+    padding: 1em;
 }
 .createTask {
     color: darkslategray;
@@ -31,4 +35,9 @@
     display: flex;
     background-color: darkslategray;
     color: white;
+}
+.getTask {
+    width: 9em;
+    margin: 0 auto;
+
 }

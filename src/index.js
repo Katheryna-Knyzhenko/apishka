@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ApishkaMainCode from "./App";
+import MainPage from "./MainPage";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApishkaMainCode />
+    <MainPage />
   </React.StrictMode>,
   document.getElementById('root')
 );
