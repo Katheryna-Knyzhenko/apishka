@@ -7,35 +7,54 @@ class ApishkaMainCode extends Component {
     super(props);
     this.state = {
       deleteOneTask: false,
-      getNewTask: false,
-      createOne: false
+      getNewTask: '',
+      createOne: ''
     };
     this.createNewTask = this.createNewTask.bind(this);
     this.getNewTask = this.getNewTask.bind(this);
-    this.deleteTaskButton = this.deleteTaskButton.bind(this);
+    // this.deleteTaskButton = this.deleteTaskButton.bind(this);
   }
 
   createNewTask = () => {
     this.setState({
-      createOne: !this.state.createOne
+      createOne: createTask('First taska')
     });
-    createTask('First taska')
+
   };
   getNewTask = () => {
     this.setState({
-      getNewTask: !this.state.getNewTask
+      getNewTask: getTasks()
     });
-    getTasks()
+
   };
-  deleteTaskButton = (tasks) => {
-    this.setState({
-      deleteOneTask: !this.state.deleteOneTask
-    });
-    deleteTask('29588e06-42bd-40ff-b885-9698f663770c')
-  };
+  // deleteTaskButton = (tasks) => {
+  //   tasks.forEach(task => {
+  //     this.setState({
+  //       deleteOneTask: deleteTask(task.id)
+  //     });
+  //   })
+  // };
   // tasks.map(function(task) {
   //   return  deleteTask(task.id)
-  // })
+  // }) function onTasksRecieved (tasks) {
+  //
+  //         const result = document.querySelector("#tasks-result");
+  //         result.innerHTML = '';
+  //
+  //         tasks.forEach(task => {
+  //             const li = document.createElement('li');
+  //             li.innerHTML = `${task.title}        ${task.id}`;
+  //             li.id = task.id;
+  //             result.appendChild(li);
+  //             const buttonDelete = document.createElement('button');
+  //             buttonDelete.innerHTML = 'delete task';
+  //             buttonDelete.id = 'delete-task';
+  //             buttonDelete.addEventListener('click', () => { deleteTasks(task.id); li.remove()} );
+  //             li.appendChild(buttonDelete);
+  //
+  //         });
+  //         createTasks('FirstTask2');
+  //     }
   render() {
 
     return (
