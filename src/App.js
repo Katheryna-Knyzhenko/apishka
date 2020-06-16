@@ -18,7 +18,7 @@ class ApishkaMainCode extends Component {
 
   createNewTask = () => {
     this.setState({
-      createOne: createTask('First taska').createNewTask
+      createOne: createTask('First taska')
 
     });
 
@@ -26,16 +26,6 @@ class ApishkaMainCode extends Component {
   getNewTask = () => {
      this.setState({
       getNewTask: getTasks()
-      .then(() => function onTasksRecieved(tasks) {
-        tasks.forEach(task => {
-          const li = document.createElement('li');
-          li.innerHTML = `${task.title}        ${task.id}`;
-          li.id = task.id;
-          document.body.appendChild(li)
-        })
-        onTasksRecieved(tasks);
-      })
-
     });
 
 
@@ -44,18 +34,18 @@ class ApishkaMainCode extends Component {
 
   testButton = () => {
     let tasksRecieved = function onTasksRecieved(tasks) {
-        // tasks.forEach(task => {
-        //     const li = document.createElement('li');
-        //     li.innerHTML = `${task.title}        ${task.id}`;
-        //     li.id = task.id;
-        //     document.body.appendChild(li);
-        // })
+        tasks.forEach(task => {
+            const li = document.createElement('li');
+            li.innerHTML = `${task.title}        ${task.id}`;
+            li.id = task.id;
+            document.body.appendChild(li);
+        })
       alert(tasks)}
       const promise = new Promise( function (resolve, reject) {
         resolve(getTasks())
       })
       promise.then(function (result) {
-        tasksRecieved()
+        tasksRecieved(result)
       })
 
   }
@@ -67,27 +57,7 @@ class ApishkaMainCode extends Component {
   //     });
   //   })
   // };
-  // tasks.map(function(task) {
-  //   return  deleteTask(task.id)
-  // }) function onTasksRecieved (tasks) {
-  //
-  //         const result = document.querySelector("#tasks-result");
-  //         result.innerHTML = '';
-  //
-  //         tasks.forEach(task => {
-  //             const li = document.createElement('li');
-  //             li.innerHTML = `${task.title}        ${task.id}`;
-  //             li.id = task.id;
-  //             result.appendChild(li);
-  //             const buttonDelete = document.createElement('button');
-  //             buttonDelete.innerHTML = 'delete task';
-  //             buttonDelete.id = 'delete-task';
-  //             buttonDelete.addEventListener('click', () => { deleteTasks(task.id); li.remove()} );
-  //             li.appendChild(buttonDelete);
-  //
-  //         });
-  //         createTasks('FirstTask2');
-  //     }
+
   render() {
 
     return (
