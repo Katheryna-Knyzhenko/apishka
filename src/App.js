@@ -12,7 +12,7 @@ class ApishkaMainCode extends Component {
     };
     this.createNewTask = this.createNewTask.bind(this);
     this.getNewTask = this.getNewTask.bind(this);
-    // this.deleteTaskButton = this.deleteTaskButton.bind(this);
+    this.deleteTaskButton = this.deleteTaskButton.bind(this);
     // this.testButton = this.testButton.bind(this);
   }
 
@@ -31,6 +31,11 @@ class ApishkaMainCode extends Component {
             li.innerHTML = `${task.title}        ${task.id}`;
             li.id = task.id;
             document.getElementById('getTaskDiv').appendChild(li);
+            const buttonDelete = document.createElement('button');
+            buttonDelete.innerHTML = 'delete task';
+            buttonDelete.id = 'delete-task';
+            buttonDelete.addEventListener('click', () => { deleteTask(task.id); li.remove()} );
+            li.appendChild(buttonDelete);
         })
      }
       const promise = new Promise( function (resolve, reject) {
@@ -42,13 +47,13 @@ class ApishkaMainCode extends Component {
 
   }
 
-  // deleteTaskButton = (tasks) => {
-  //   tasks.forEach(task => {
-  //     this.setState({
-  //       deleteOneTask: deleteTask(task.id)
-  //     });
-  //   })
-  // };
+  deleteTaskButton = (tasks) => {
+    tasks.forEach(task => {
+      this.setState({
+        deleteOneTask: deleteTask(task.id)
+      });
+    })
+  };
 
   render() {
 
