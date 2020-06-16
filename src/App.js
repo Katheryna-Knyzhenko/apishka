@@ -43,15 +43,22 @@ class ApishkaMainCode extends Component {
 
 
   testButton = () => {
-    let tasksRecieved = function onTasksRecieved ()  {
-      alert('OnTaskesRecieved')
-    }
-    let promise = new Promise(function(resolve, reject) {
-      resolve(getTasks())
-    }).then(function(result) {
-      tasksRecieved()
-    })
+    let tasksRecieved = function onTasksRecieved(tasks) {
+      tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.innerHTML = `${task.title}        ${task.id}`;
+        li.id = task.id;
+        document.body.appendChild(li);
+      })}
+      const promise = new Promise(function (resolve, reject) {
+        resolve(getTasks())
+      })
+      promise.then(function (result) {
+        tasksRecieved()
+      })
+
   }
+
   // deleteTaskButton = (tasks) => {
   //   tasks.forEach(task => {
   //     this.setState({
