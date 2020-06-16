@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-between;
 }
-.divWithButtonCreateTask , .divWithButtonCetTask , .divWithButtonDeleteTask  {
+.divWithButtonCreateTask , .divWithButtonGetTask , .divWithButtonDeleteTask  {
     margin: 3em;
     display: flex;
     flex-wrap: wrap;

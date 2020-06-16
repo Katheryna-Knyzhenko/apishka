@@ -13,7 +13,7 @@ class ApishkaMainCode extends Component {
     this.createNewTask = this.createNewTask.bind(this);
     this.getNewTask = this.getNewTask.bind(this);
     // this.deleteTaskButton = this.deleteTaskButton.bind(this);
-    this.testButton = this.testButton.bind(this);
+    // this.testButton = this.testButton.bind(this);
   }
 
   createNewTask = () => {
@@ -23,22 +23,14 @@ class ApishkaMainCode extends Component {
     });
 
   };
+
   getNewTask = () => {
-     this.setState({
-      getNewTask: getTasks()
-    });
-
-
-  };
-
-
-  testButton = () => {
     let tasksRecieved = function onTasksRecieved(tasks) {
         tasks.forEach(task => {
             const li = document.createElement('li');
             li.innerHTML = `${task.title}        ${task.id}`;
             li.id = task.id;
-            document.getElementById('testDiv').appendChild(li);
+            document.getElementById('getTaskDiv').appendChild(li);
         })
      }
       const promise = new Promise( function (resolve, reject) {
@@ -68,14 +60,11 @@ class ApishkaMainCode extends Component {
               <div className='divWithButtonCreateTask'>
               <button className='createTask' onClick={this.createNewTask}>Create task</button>
               </div>
-              <div className='divWithButtonCetTask'>
+              <div className='divWithButtonGetTask' id='getTaskDiv'>
               <button className='getTask' onClick={this.getNewTask}>Get task</button>
             </div>
               <div className='divWithButtonDeleteTask'>
                 <button className='deleteTask' onClick={this.deleteTaskButton}>Delete task</button>
-              </div>
-              <div className='divWithButtonTest' id='testDiv'>
-                <button className='testButton' onClick={this.testButton}>Test</button>
               </div>
             </div>
           </div>
