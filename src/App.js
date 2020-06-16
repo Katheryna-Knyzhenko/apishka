@@ -13,6 +13,7 @@ class ApishkaMainCode extends Component {
     this.createNewTask = this.createNewTask.bind(this);
     this.getNewTask = this.getNewTask.bind(this);
     // this.deleteTaskButton = this.deleteTaskButton.bind(this);
+    this.testButton = this.testButton.bind(this);
   }
 
   createNewTask = () => {
@@ -39,6 +40,18 @@ class ApishkaMainCode extends Component {
 
 
   };
+
+
+  testButton = () => {
+    let tasksRecieved = function onTasksRecieved ()  {
+      alert('OnTaskesRecieved')
+    }
+    let promise = new Promise(function(resolve, reject) {
+      resolve(getTasks())
+    }).then(function(result) {
+      tasksRecieved()
+    })
+  }
   // deleteTaskButton = (tasks) => {
   //   tasks.forEach(task => {
   //     this.setState({
@@ -82,6 +95,9 @@ class ApishkaMainCode extends Component {
             </div>
               <div className='divWithButtonDeleteTask'>
                 <button className='deleteTask' onClick={this.deleteTaskButton}>Delete task</button>
+              </div>
+              <div className='divWithButtonTest'>
+                <button className='testButton' onClick={this.testButton}>Test</button>
               </div>
             </div>
           </div>
