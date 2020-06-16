@@ -12,8 +12,6 @@ class ApishkaMainCode extends Component {
     };
     this.createNewTask = this.createNewTask.bind(this);
     this.getNewTask = this.getNewTask.bind(this);
-    this.deleteTaskButton = this.deleteTaskButton.bind(this);
-    // this.testButton = this.testButton.bind(this);
   }
 
   createNewTask = () => {
@@ -70,10 +68,8 @@ class ApishkaMainCode extends Component {
               <div className='divWithButtonGetTask'>
               <button className='getTask' onClick={this.getNewTask}>Get task</button>
             </div>
-                <div id = 'getTaskDiv'></div>
-              <div className='divWithButtonDeleteTask'>
-                <button className='deleteTask' onClick={this.deleteTaskButton}>Delete task</button>
-              </div>
+                <div id = 'getTaskDiv'>
+                    <span className='apiTitle'>API</span></div>
             </div>
           </div>
 
