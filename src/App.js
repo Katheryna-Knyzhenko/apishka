@@ -44,13 +44,14 @@ class ApishkaMainCode extends Component {
 
   testButton = () => {
     let tasksRecieved = function onTasksRecieved(tasks) {
-      tasks.forEach(task => {
-        const li = document.createElement('li');
-        li.innerHTML = `${task.title}        ${task.id}`;
-        li.id = task.id;
-        document.body.appendChild(li);
-      })}
-      const promise = new Promise(function (resolve, reject) {
+        // tasks.forEach(task => {
+        //     const li = document.createElement('li');
+        //     li.innerHTML = `${task.title}        ${task.id}`;
+        //     li.id = task.id;
+        //     document.body.appendChild(li);
+        // })
+      alert(tasks)}
+      const promise = new Promise( function (resolve, reject) {
         resolve(getTasks())
       })
       promise.then(function (result) {
