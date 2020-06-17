@@ -9,28 +9,37 @@ class MainPage extends Component {
             tasks: []
         };
         this.createNewTask = this.createNewTask.bind(this);
-        this.showTasksList = this.showTasksList.bind(this)
+        // this.showTasksList = this.showTasksList.bind(this)
         // this.getNewTask = this.getNewTask.bind(this);
     }
-     showTasksList (tasks)  {
-        alert('код кривой')
-        tasks.forEach(task => {
-            const li = document.createElement('li');
-            li.innerHTML = `${task.title}        ${task.id}`;
-            li.id = task.id;
-            document.getElementById('getTaskDiv').appendChild(li);
-        })
-    }
+    //  showTasksList (tasks)  {
+    //
+    //      tasks.forEach(task => {
+    //         const li = document.createElement('li');
+    //         li.innerHTML = `${task.title}        ${task.id}`;
+    //         li.id = task.id;
+    //         document.getElementById('getTaskDiv').appendChild(li);
+    //     })
+    // }
 
     createNewTask () {
         createTask('My new task')
-            .then(() => getTasks())
-            .then((response) => {this.setState({tasks: response})})
-            .then(() => {this.showTasksList(this.props.tasks)})
+            .then((response) => {this.setState({tasks: response.data})})
+            .then((response) => getTasks(response))
+            .then((response) => {return response.data})
     }
 
     render () {
+        // if (this.state.tasks.length !==0) {
+        //     const tasky = this.state.tasks.data;
+        //     tasky.forEach(task => {
+        //     const li = document.createElement('li');
+        //     li.innerHTML = `${task.title}        ${task.id}`;
+        //     li.id = task.id;
+        //     document.getElementById('getTaskDiv').appendChild(li);
+        // })}
     return (
+
         <div className='wapper'>
             <div className='wrap'>
                 <div className= 'hiHeader'>Ну привет, Женя!</div>
@@ -40,6 +49,7 @@ class MainPage extends Component {
                     </div>
                     <div className='divWithButtonGetTask'>
                         <button className='getTask' onClick={this.createNewTask}>Create task</button>
+
                     </div>
                     <div id = 'getTaskDiv'>
                         <span className='apiTitle'>API</span></div>
