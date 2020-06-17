@@ -26,17 +26,17 @@ class MainPage extends Component {
         createTask('My new task')
             .then((response) => {this.setState({tasks: response.data})})
             .then((response) => getTasks(response))
-            .then((response) => {return this.state.tasks})
+            .then((response) => {return response.data})
     }
 
     render () {
         //     const tasky = this.state.tasks;
-        //     tasky.forEach(task => {
-        //     const li = document.createElement('li');
-        //     li.innerHTML = `${task.title}        ${task.id}`;
-        //     li.id = task.id;
-        //     document.getElementById('getTaskDiv').appendChild(li);
-        // })
+        //         //     tasky.forEach(task => {
+        //         //     const li = document.createElement('li');
+        //         //     li.innerHTML = `${task.title}        ${task.id}`;
+        //         //     li.id = task.id;
+        //         //     document.getElementById('getTaskDiv').appendChild(li);
+        //         // })
     return (
 
         <div className='wapper'>
