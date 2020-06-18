@@ -22,12 +22,12 @@ class MainPage extends Component {
 
     render () {
             const tasky = this.state.tasks;
-                //     tasky.forEach(task => {
-                //     const li = document.createElement('li');
-                //     li.innerHTML = `${task.title}        ${task.id}`;
-                //     li.id = task.id;
-                //     document.getElementById('getTaskDiv').appendChild(li);
-                // })
+                    tasky.forEach(task => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `${task.title}        ${task.id}`;
+                    li.id = task.id;
+                    document.getElementById('getTaskDiv').appendChild(li);
+                })
     return (
 
         <div className='wapper'>
