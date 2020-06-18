@@ -16,8 +16,8 @@ class MainPage extends Component {
 
     createNewTask () {
         createTask('My new task')
-            .then((response) => {this.setState({tasks: response.data})})
-            .then((response) => getTasks(response))
+            .then((response) => getTasks(response)
+                .then((response) => {this.setState({tasks: response.data})}))
             .then((response) => {return response.data})
     }
 
