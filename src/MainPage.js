@@ -12,15 +12,7 @@ class MainPage extends Component {
         // this.showTasksList = this.showTasksList.bind(this)
         // this.getNewTask = this.getNewTask.bind(this);
     }
-    //  showTasksList (tasks)  {
-    //
-    //      tasks.forEach(task => {
-    //         const li = document.createElement('li');
-    //         li.innerHTML = `${task.title}        ${task.id}`;
-    //         li.id = task.id;
-    //         document.getElementById('getTaskDiv').appendChild(li);
-    //     })
-    // }
+
 
     createNewTask () {
         createTask('My new task')
@@ -30,13 +22,13 @@ class MainPage extends Component {
     }
 
     render () {
-        //     const tasky = this.state.tasks;
-        //         //     tasky.forEach(task => {
-        //         //     const li = document.createElement('li');
-        //         //     li.innerHTML = `${task.title}        ${task.id}`;
-        //         //     li.id = task.id;
-        //         //     document.getElementById('getTaskDiv').appendChild(li);
-        //         // })
+            const tasky = this.state.tasks;
+                //     tasky.forEach(task => {
+                //     const li = document.createElement('li');
+                //     li.innerHTML = `${task.title}        ${task.id}`;
+                //     li.id = task.id;
+                //     document.getElementById('getTaskDiv').appendChild(li);
+                // })
     return (
 
         <div className='wapper'>
@@ -44,7 +36,7 @@ class MainPage extends Component {
                 <div className= 'hiHeader'>Ну привет, Женя!</div>
                 <div className= 'mainCode'>
                     <div className='divWithSomeInfo'>
-                       Здесь будет мой корректно работающий код. Я старательно работаю, чтобы всё получилось нормально. Извини, если чьо.
+                         Здесь будет мой корректно работающий код. Я старательно работаю, чтобы всё получилось нормально. Извини, если чьо.
                     </div>
                     <div className='divWithButtonGetTask'>
                         <button className='getTask' onClick={this.createNewTask}>Create task</button>
