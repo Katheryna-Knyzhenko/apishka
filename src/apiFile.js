@@ -13,16 +13,9 @@ export function getTasks () {
 }
 
 export function deleteTask (id) {
-    const promise = axios.delete(`https://repetitora.net/api/JS/Tasks?widgetId=1730&taskId=${id}`
+    return  axios.delete(`https://repetitora.net/api/JS/Tasks?widgetId=1730&taskId=${id}`
     );
 
-    return promise.then((response) => {
-        return response.data});
-}
-export function deleteTasks (id) {
-    const promise = axios.delete(`https://repetitora.net/api/JS/Tasks?widgetId=7737&taskId=${id}`
-    );
-
-    return promise.then((response) => {
-        return response.data});
+    // return promise.then((response) => {
+    //     return response.data});
 }
