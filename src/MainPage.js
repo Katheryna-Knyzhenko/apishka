@@ -19,11 +19,12 @@ class MainPage extends Component {
                 .then((response) => {this.setState({tasks: response.data})}))
     }
 
+
     render () {
 
                    const mapping  =  this.state.tasks.map((task) =>
                            <li key='task.id' className='taskList'>{task.title} {task.id}
-                           <button id='deleteTaskBut'>delete task</button></li>
+                           <button id='deleteTaskBut' onClick={() => {deleteTask(task.id)}}>delete task</button></li>
                 );
     return (
 
