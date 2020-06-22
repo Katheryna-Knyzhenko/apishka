@@ -14,6 +14,7 @@ export function getTasks () {
 
 export function deleteTask (id) {
     return  axios.delete(`https://repetitora.net/api/JS/Tasks?widgetId=1730&taskId=${id}`
+
     );
 
     // return promise.then((response) => {

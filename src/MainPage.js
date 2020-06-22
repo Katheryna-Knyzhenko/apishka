@@ -10,6 +10,7 @@ class MainPage extends Component {
             tasks: []
         };
         this.createNewTask = this.createNewTask.bind(this);
+        this.deleteOneTask =  this.deleteOneTask.bind(this)
 
     }
 
@@ -20,12 +21,16 @@ class MainPage extends Component {
                 .then((response) => {this.setState({tasks: response.data})}))
     }
 
-
+deleteOneTask (id) {
+        deleteTask(id).then(() => getTasks().then((response) =>
+        {this.setState({tasks: response.data})}))
+}
     render () {
 
                    const mapping  =  this.state.tasks.map((task) =>
                            <li key='task.id' className='taskList'>{task.title} {task.id}
-                           <button id='deleteTaskBut' onClick={() => {deleteTask(task.id).then(() => getTasks().then((response) => {this.setState({tasks: response.data})}))}}>delete task</button></li>
+                           <button id='deleteTaskBut' onClick={() =>
+                           {this.deleteOneTask(task.id)}}>delete task</button></li>
 
                 );
 
