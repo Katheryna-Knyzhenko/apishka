@@ -22,7 +22,7 @@ class MainPage extends Component {
 
     render () {
             const tasky = this.state.tasks;
-                    tasky.forEach(task => {
+                   const mapping  =  tasky.forEach(task => {
                     const li = document.createElement('li');
                     li.innerHTML = `${task.title}        ${task.id}`;
                     li.id = task.id;
@@ -42,7 +42,7 @@ class MainPage extends Component {
 
                     </div>
                     <div id = 'getTaskDiv'>
-                        <span className='apiTitle'>API</span></div>
+                        <span className='apiTitle'>API</span>{mapping}</div>
                 </div>
             </div>
 
