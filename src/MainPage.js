@@ -9,8 +9,7 @@ class MainPage extends Component {
             tasks: []
         };
         this.createNewTask = this.createNewTask.bind(this);
-        // this.showTasksList = this.showTasksList.bind(this)
-        // this.getNewTask = this.getNewTask.bind(this);
+
     }
 
 
@@ -21,13 +20,11 @@ class MainPage extends Component {
     }
 
     render () {
-            const tasky = this.state.tasks;
-                   const mapping  =  tasky.forEach(task => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `${task.title}        ${task.id}`;
-                    li.id = task.id;
-                    document.getElementById('getTaskDiv').appendChild(li);
-                })
+
+                   const mapping  =  this.state.tasks.map((task) =>
+                           <li key='task.id' className='taskList'>{task.title} {task.id}
+                           <button id='deleteTaskBut'>delete task</button></li>
+                );
     return (
 
         <div className='wapper'>
