@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import {createTask, deleteTask, getTasks} from './apiFile';
+import $ from 'jquery';
 
 class MainPage extends Component {
     constructor(props) {
