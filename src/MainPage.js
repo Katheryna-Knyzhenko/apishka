@@ -7,23 +7,25 @@ class MainPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tasks: []
+            tasks: [],
+            isDisabled: false
         };
         this.createNewTask = this.createNewTask.bind(this);
-        this.deleteOneTask =  this.deleteOneTask.bind(this)
+        this.deleteOneTask =  this.deleteOneTask.bind(this);
         this.deleteAll =  this.deleteAll.bind(this)
     }
 
   componentDidMount() {
       getTasks()
-          .then((response) => {this.setState({tasks: response.data})})
+          .then((response) => {this.setState({tasks: response.data} )})
   }
 
     createNewTask () {
 
-        createTask(`My ${this.state.tasks.length + 1}task`)
+        createTask(`My ${this.state.tasks.length + 1}task`).then(() =>
+        {this.setState({isDisabled: true})})
             .then(() => getTasks()
-                .then((response) => {this.setState({tasks: response.data})}))
+                .then((response) => {this.setState({tasks: response.data, isDisabled: false})}))
     }
 
        deleteOneTask (id) {
@@ -36,8 +38,8 @@ class MainPage extends Component {
              if (questionAboutDeleteTasks) {
                  this.state.tasks.map((task) =>
                      deleteTask(task.id)
-                 )
-                 this.setState({tasks: []})
+                 );
+                  this.setState({tasks: []})
 
              }
              // else {
@@ -65,7 +67,7 @@ class MainPage extends Component {
                          Здесь будет мой корректно работающий код. Я старательно работаю, чтобы всё получилось нормально. Извини, если чьо.
                     </div>
                     <div className='divWithButtonGetTask'>
-                        <button className='getTask' onClick={this.createNewTask}>Create task</button>
+                        <button className='getTask' onClick={this.createNewTask} disabled={this.state.isDisabled}>Create task</button>
                             <button className='deleteAllTasks' onClick={this.deleteAll}>delete all</button>
                     </div>
                     <div id = 'getTaskDiv'>
