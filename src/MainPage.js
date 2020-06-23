@@ -32,8 +32,10 @@ class MainPage extends Component {
          let questionAboutDeleteTasks = prompt('Действительно ли Вы хотите удалить все таски?', 'да');
              if (questionAboutDeleteTasks) {
                  this.state.tasks.map((task) =>
-                     this.deleteOneTask (task.id)
+                     deleteTask(task.id).then(() => getTasks().then((response) =>
+                     {this.setState({tasks: []})}))
                  )
+
              } else {
                  alert('Оно Вам и не надо!')
              }
