@@ -11,7 +11,7 @@ class MainPage extends Component {
         };
         this.createNewTask = this.createNewTask.bind(this);
         this.deleteOneTask =  this.deleteOneTask.bind(this)
-
+        this.deleteAll =  this.deleteAll.bind(this)
     }
 
 
@@ -21,10 +21,23 @@ class MainPage extends Component {
                 .then((response) => {this.setState({tasks: response.data})}))
     }
 
-deleteOneTask (id) {
+       deleteOneTask (id) {
         deleteTask(id).then(() => getTasks().then((response) =>
         {this.setState({tasks: response.data})}))
 }
+
+         deleteAll () {
+         let questionAboutDeleteTasks = prompt('Действительно ли Вы хотите удалить все таски?', 'да');
+             if (questionAboutDeleteTasks) {
+                 this.state.tasks.map((task) =>
+                     this.deleteOneTask (task.id)
+                 )
+             } else {
+                 alert('Оно Вам и не надо!')
+             }
+}
+
+
     render () {
 
                    const mapping  =  this.state.tasks.map((task) =>
@@ -45,11 +58,12 @@ deleteOneTask (id) {
                     </div>
                     <div className='divWithButtonGetTask'>
                         <button className='getTask' onClick={this.createNewTask}>Create task</button>
-
+                            <button className='deleteAllTasks' onClick={this.deleteAll}>delete all</button>
                     </div>
                     <div id = 'getTaskDiv'>
                         <span className='apiTitle'>API</span>{mapping}</div>
                 </div>
+
             </div>
 
         </div>

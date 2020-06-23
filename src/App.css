@@ -53,3 +53,10 @@
 .taskList {
     margin-top: 1em;
 }
+.deleteAllTasks {
+    width: 9em;
+    margin: 0 auto;
+    background-color: darkslategray;
+    color: honeydew;
+    margin-top: 3em;
+}
