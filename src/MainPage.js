@@ -14,13 +14,16 @@ class MainPage extends Component {
         this.deleteAll =  this.deleteAll.bind(this)
     }
 
+  componentDidMount() {
+      getTasks()
+          .then((response) => {this.setState({tasks: response.data})})
+  }
 
     createNewTask () {
-        for (var i = 1; i < 20; i++) {
-        createTask(`My ${i} task`)
 
+        createTask(`My ${this.state.tasks.length + 1}task`)
             .then(() => getTasks()
-                .then((response) => {this.setState({tasks: response.data})}))}
+                .then((response) => {this.setState({tasks: response.data})}))
     }
 
        deleteOneTask (id) {
