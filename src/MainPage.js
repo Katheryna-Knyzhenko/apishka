@@ -21,9 +21,8 @@ class MainPage extends Component {
   }
 
     createNewTask () {
-
-        createTask(`My ${this.state.tasks.length + 1}task`).then(() =>
-        {this.setState({isDisabled: true})})
+        this.setState({isDisabled: true})
+        createTask(`My ${this.state.tasks.length + 1}task`)
             .then(() => getTasks()
                 .then((response) => {this.setState({tasks: response.data, isDisabled: false})}))
     }
