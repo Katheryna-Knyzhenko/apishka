@@ -47,7 +47,7 @@
     margin-top: 1em;
     margin-left:3em;
     margin-bottom: 1em;
-    background-color: darkslategray;
+    background-color: firebrick;
     color: honeydew;
 }
 .taskList {
@@ -59,4 +59,9 @@
     background-color: firebrick;
     color: honeydew;
     margin-top: 6em;
+}
+#editTask {
+    margin-left: 0.3em;
+    background-color: darkslategray;
+    color: honeydew;
 }

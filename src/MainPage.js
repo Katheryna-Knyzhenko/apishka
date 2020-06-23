@@ -12,14 +12,17 @@ class MainPage extends Component {
         };
         this.createNewTask = this.createNewTask.bind(this);
         this.deleteOneTask =  this.deleteOneTask.bind(this);
-        this.deleteAll =  this.deleteAll.bind(this)
+        this.deleteAll =  this.deleteAll.bind(this);
+        this.editTask =  this.editTask.bind(this)
     }
 
   componentDidMount() {
       getTasks()
           .then((response) => {this.setState({tasks: response.data} )})
   }
-
+     editTask ()  {
+        alert('edit task')
+      }
     createNewTask () {
         this.setState({isDisabled: true})
         createTask(`My ${this.state.tasks.length + 1}task`)
@@ -52,7 +55,10 @@ class MainPage extends Component {
                    const mapping  =  this.state.tasks.map((task) =>
                            <li key='task.id' className='taskList'>{task.title} {task.id}
                            <button id='deleteTaskBut' onClick={() =>
-                           {this.deleteOneTask(task.id)}}>delete task</button></li>
+                           {this.deleteOneTask(task.id)}}>delete task</button>
+                           <button id='editTask' onClick={() =>
+                           {this.editTask(task.id)}}>edit task</button>
+                           </li>
 
                 );
 
