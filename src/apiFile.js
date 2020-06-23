@@ -8,7 +8,7 @@ export function createTask (title) {
 
 const axios = require('axios');
 export function getTasks () {
-    return axios.get(`https://repetitora.net/api/JS/Tasks?widgetId=1730&count=20`);
+    return axios.get(`https://repetitora.net/api/JS/Tasks?widgetId=1730&count=10`);
 
 }
 
