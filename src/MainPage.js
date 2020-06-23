@@ -16,9 +16,11 @@ class MainPage extends Component {
 
 
     createNewTask () {
-        createTask('My new task')
+        for (var i = 1; i < 30; i++) {
+        createTask(`My ${i} task`)
+
             .then(() => getTasks()
-                .then((response) => {this.setState({tasks: response.data})}))
+                .then((response) => {this.setState({tasks: response.data})}))}
     }
 
        deleteOneTask (id) {
