@@ -25,11 +25,10 @@ class MainPage extends Component {
   }
      editTask (id)  {
         var title = this.state.taskTitle;
-        this.setState({selectedTaskId: id})
-             this.setState({isOpenInputField: true})
 
+             this.setState({isOpenInputField: true, selectedTaskId: id})
 
-     updateTasks('new task', id).then((response) => {
+     updateTasks('new task', id, "true").then((response) => {
         return response.data}).then(() => getTasks().then((response) =>
      {this.setState({tasks: response.data,isOpenInputField: false })
       }))}
