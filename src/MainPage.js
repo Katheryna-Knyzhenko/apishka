@@ -28,7 +28,7 @@ class MainPage extends Component {
 
      updateTasks(title, id).then((response) => {
         return response.data}).then(() => getTasks().then((response) =>
-     {this.setState({tasks: response.data})
+     {this.setState({tasks: response.data,isOpenInputField: false })
       }))}
 
     createNewTask () {
