@@ -10,7 +10,8 @@ class MainPage extends Component {
             tasks: [],
             isDisabled: false,
             taskTitle: '',
-            isOpenInputField: false
+            isOpenInputField: false,
+            selectedTaskId: null
         };
         this.createNewTask = this.createNewTask.bind(this);
         this.deleteOneTask =  this.deleteOneTask.bind(this);
@@ -24,9 +25,11 @@ class MainPage extends Component {
   }
      editTask (id)  {
         var title = this.state.taskTitle;
-        this.setState({isOpenInputField: true})
+        this.setState({selectedTaskId: id})
+             this.setState({isOpenInputField: true})
 
-     updateTasks(title, id).then((response) => {
+
+     updateTasks('new task', id).then((response) => {
         return response.data}).then(() => getTasks().then((response) =>
      {this.setState({tasks: response.data,isOpenInputField: false })
       }))}
