@@ -8,7 +8,9 @@ class MainPage extends Component {
         super(props);
         this.state = {
             tasks: [],
-            isDisabled: false
+            isDisabled: false,
+            taskTitle: '',
+            isOpenInputField: false
         };
         this.createNewTask = this.createNewTask.bind(this);
         this.deleteOneTask =  this.deleteOneTask.bind(this);
@@ -21,8 +23,12 @@ class MainPage extends Component {
           .then((response) => {this.setState({tasks: response.data} )})
   }
      editTask (id)  {
-     updateTasks('TASKS UPDATED', id).then((response) => {
-        return response.data}).then(() => getTasks().then((response) => {this.setState({tasks: response.data})
+        var title = this.state.taskTitle;
+        this.setState({isOpenInputField: true})
+
+     updateTasks(title, id).then((response) => {
+        return response.data}).then(() => getTasks().then((response) =>
+     {this.setState({tasks: response.data})
       }))}
 
     createNewTask () {
@@ -52,19 +58,26 @@ class MainPage extends Component {
 }
 
 
+
+
     render () {
 
                    const mapping  =  this.state.tasks.map((task) =>
                            <li key='task.id' className='taskList'>{task.title} {task.id}
+                               <input hidden={!this.state.isOpenInputField}></input>
                            <button id='deleteTaskBut' onClick={() =>
                            {this.deleteOneTask(task.id)}}>delete task</button>
                            <button id='editTask' onClick={() =>
                            {this.editTask( task.id)}}>edit task</button>
-                           </li>
 
-                );
+                           </li>);
+
+        // if (this.state.inputField) {
+        //     var input = <input>Rename task</input>
+        // }
 
     return (
+
 
         <div className='wapper'>
             <div className='wrap'>
