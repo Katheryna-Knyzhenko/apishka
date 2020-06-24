@@ -20,3 +20,14 @@ export function deleteTask (id) {
     // return promise.then((response) => {
     //     return response.data});
 }
+export function updateTasks (title, id, done) {
+   return axios.put(`https://repetitora.net/api/JS/Tasks`, {
+        widgetId:1730,
+        title:title,
+        taskId: id,
+        done: done
+    });
+
+    // return promise.then((response) => {
+    //     return response.data});
+}
