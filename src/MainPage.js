@@ -70,10 +70,9 @@ class MainPage extends Component {
         // }
     }
 
-    changeTaskName(event) {
+    changeTaskName(event, id) {
         event.preventDefault();
-        this.setState({inputValue: event.target.value})
-
+            this.setState({inputValue: event.target.value})
 
     }
 
