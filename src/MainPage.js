@@ -9,15 +9,14 @@ class MainPage extends Component {
         this.state = {
             tasks: [],
             isDisabled: false,
-            isOpenInputField: false,
             selectedTaskId: null,
             inputValue: '',
-            isEdit: true
+            isCanEdit: false
         };
         this.createNewTask = this.createNewTask.bind(this);
         this.deleteOneTask = this.deleteOneTask.bind(this);
         this.deleteAll = this.deleteAll.bind(this);
-        this.editTask = this.editTask.bind(this)
+        this.editTask = this.editTask.bind(this);
         this.changeTaskName = this.changeTaskName.bind(this)
     }
 
@@ -28,18 +27,19 @@ class MainPage extends Component {
             })
     }
 
-    editTask(id, event) {
+    editTask(id) {
         var taskChangedByInput = this.state.inputValue;
-        this.setState({selectedTaskId: id, inputValue: ''})
-        if (this.state.selectedTaskId === id) {
-            this.setState({isOpenInputField: true, isEdit: true})
-        }
+        this.setState({selectedTaskId: id, inputValue: ''});
+            this.setState({ isCanEdit: !this.state.isCanEdit});
 
-        updateTasks(taskChangedByInput, id, "true").then((response) => {
-            return response.data
-        }).then(() => getTasks().then((response) => {
-            this.setState({tasks: response.data, isOpenInputField: false})
-        }))
+
+        if (this.state.isCanEdit) {
+            updateTasks(taskChangedByInput, id, "true")
+                .then(() => getTasks()
+                    .then((response) => {
+                        this.setState({tasks: response.data})
+                    }))
+        }
     }
 
     createNewTask() {
@@ -84,7 +84,7 @@ class MainPage extends Component {
         const mapping = this.state.tasks.map((task) =>
             <li key='task.id' className='taskList'>{task.title} {task.id}
                 <input value={this.state.inputValue} onChange={this.changeTaskName}
-                       hidden={!this.state.isOpenInputField && this.state.selectedTaskId !== task.id}>
+                       hidden={this.state.selectedTaskId !== task.id}>
 
                 </input>
                 <button id='deleteTaskBut' onClick={() => {
@@ -93,7 +93,7 @@ class MainPage extends Component {
                 </button>
                 <button id='editTask' onClick={() => {
                     this.editTask(task.id)
-                }}>{this.state.isEdit && this.state.selectedTaskId !== task.id ? 'edit' : 'submit'}
+                }}>{this.state.selectedTaskId !== task.id ? 'edit' : 'submit'}
                 </button>
 
             </li>);
