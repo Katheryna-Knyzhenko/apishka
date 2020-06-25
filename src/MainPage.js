@@ -30,7 +30,7 @@ class MainPage extends Component {
 
     editTask(id, event) {
         var taskChangedByInput = this.state.inputValue;
-        this.setState({selectedTaskId: id, inputValue: '', isEdit: false})
+        this.setState({selectedTaskId: id, inputValue: ''})
         if (this.state.selectedTaskId === id) {
             this.setState({isOpenInputField: true, isEdit: true})
         }
@@ -93,7 +93,7 @@ class MainPage extends Component {
                 </button>
                 <button id='editTask' onClick={() => {
                     this.editTask(task.id)
-                }}>{this.state.isEdit ? 'edit' : 'submit'}
+                }}>{this.state.isEdit && this.state.selectedTaskId !== task.id ? 'edit' : 'submit'}
                 </button>
 
             </li>);
