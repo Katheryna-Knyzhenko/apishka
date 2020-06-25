@@ -30,9 +30,9 @@ class MainPage extends Component {
 
     editTask(id, event) {
         var taskChangedByInput = this.state.inputValue;
-        this.setState({selectedTaskId: id, inputValue: '',  isEdit: false})
+        this.setState({selectedTaskId: id, inputValue: '', isEdit: false})
         if (this.state.selectedTaskId === id) {
-            this.setState({isOpenInputField: true})
+            this.setState({isOpenInputField: true, isEdit: true})
         }
 
         updateTasks(taskChangedByInput, id, "true").then((response) => {
