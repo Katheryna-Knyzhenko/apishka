@@ -11,7 +11,8 @@ class MainPage extends Component {
             isDisabled: false,
             isOpenInputField: false,
             selectedTaskId: null,
-            inputValue: ''
+            inputValue: '',
+            isEdit: true
         };
         this.createNewTask = this.createNewTask.bind(this);
         this.deleteOneTask = this.deleteOneTask.bind(this);
@@ -27,9 +28,9 @@ class MainPage extends Component {
             })
     }
 
-    editTask(id) {
+    editTask(id, event) {
         var taskChangedByInput = this.state.inputValue;
-        this.setState({selectedTaskId: id, inputValue: ''})
+        this.setState({selectedTaskId: id, inputValue: '',  isEdit: false})
         if (this.state.selectedTaskId === id) {
             this.setState({isOpenInputField: true})
         }
@@ -72,7 +73,8 @@ class MainPage extends Component {
 
     changeTaskName(event, id) {
         event.preventDefault();
-            this.setState({inputValue: event.target.value})
+        this.setState({inputValue: event.target.value})
+
 
     }
 
@@ -91,7 +93,7 @@ class MainPage extends Component {
                 </button>
                 <button id='editTask' onClick={() => {
                     this.editTask(task.id)
-                }}>edit task
+                }}>{this.state.isEdit ? 'edit' : 'submit'}
                 </button>
 
             </li>);
