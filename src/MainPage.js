@@ -26,6 +26,7 @@ class MainPage extends Component {
   }
      editTask (id)  {
         var taskChangedByInput = this.state.inputValue;
+        this.setState({inputValue: ''})
          this.setState({selectedTaskId: id})
           if(this.state.selectedTaskId === id) {
               this.setState({isOpenInputField: true})
@@ -62,7 +63,10 @@ class MainPage extends Component {
              // }
 }
       changeTaskName (event) {
+          event.preventDefault();
         this.setState({inputValue: event.target.value})
+
+
 }
 
 
@@ -71,7 +75,10 @@ class MainPage extends Component {
 
                    const mapping  =  this.state.tasks.map((task) =>
                            <li key='task.id' className='taskList'>{task.title} {task.id}
-                               <input value={this.state.inputValue} onChange={this.changeTaskName} hidden={!this.state.isOpenInputField && this.state.selectedTaskId !== task.id}></input>
+                               <input value={this.state.inputValue} onChange={this.changeTaskName}
+                                      hidden={!this.state.isOpenInputField && this.state.selectedTaskId !== task.id}>
+
+                               </input>
                            <button id='deleteTaskBut' onClick={() =>
                            {this.deleteOneTask(task.id)}}>delete task</button>
                            <button id='editTask' onClick={() =>
