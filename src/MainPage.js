@@ -9,14 +9,15 @@ class MainPage extends Component {
         this.state = {
             tasks: [],
             isDisabled: false,
-            taskTitle: '',
             isOpenInputField: false,
-            selectedTaskId: null
+            selectedTaskId: null,
+            inputValue: ''
         };
         this.createNewTask = this.createNewTask.bind(this);
         this.deleteOneTask =  this.deleteOneTask.bind(this);
         this.deleteAll =  this.deleteAll.bind(this);
         this.editTask =  this.editTask.bind(this)
+        this.changeTaskName =  this.changeTaskName.bind(this)
     }
 
   componentDidMount() {
@@ -24,13 +25,13 @@ class MainPage extends Component {
           .then((response) => {this.setState({tasks: response.data} )})
   }
      editTask (id)  {
-        var title = this.state.taskTitle;
+        var taskChangedByInput = this.state.inputValue;
          this.setState({selectedTaskId: id})
           if(this.state.selectedTaskId === id) {
               this.setState({isOpenInputField: true})
           }
 
-     updateTasks('new task', id, "true").then((response) => {
+     updateTasks(taskChangedByInput, id, "true").then((response) => {
         return response.data}).then(() => getTasks().then((response) =>
      {this.setState({tasks: response.data,isOpenInputField: false })
       }))}
@@ -60,7 +61,9 @@ class MainPage extends Component {
              //     alert('Оно Вам и не надо!')
              // }
 }
-
+      changeTaskName (event) {
+        this.setState({inputValue: event.target.value})
+}
 
 
 
@@ -68,7 +71,7 @@ class MainPage extends Component {
 
                    const mapping  =  this.state.tasks.map((task) =>
                            <li key='task.id' className='taskList'>{task.title} {task.id}
-                               <input hidden={!this.state.isOpenInputField && this.state.selectedTaskId !== task.id}></input>
+                               <input value={this.state.inputValue} onChange={this.changeTaskName} hidden={!this.state.isOpenInputField && this.state.selectedTaskId !== task.id}></input>
                            <button id='deleteTaskBut' onClick={() =>
                            {this.deleteOneTask(task.id)}}>delete task</button>
                            <button id='editTask' onClick={() =>
