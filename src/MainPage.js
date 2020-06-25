@@ -25,8 +25,10 @@ class MainPage extends Component {
   }
      editTask (id)  {
         var title = this.state.taskTitle;
-
-             this.setState({isOpenInputField: true, selectedTaskId: id})
+         this.setState({selectedTaskId: id})
+          if(this.state.selectedTaskId === id) {
+              this.setState({isOpenInputField: true})
+          }
 
      updateTasks('new task', id, "true").then((response) => {
         return response.data}).then(() => getTasks().then((response) =>
@@ -66,7 +68,7 @@ class MainPage extends Component {
 
                    const mapping  =  this.state.tasks.map((task) =>
                            <li key='task.id' className='taskList'>{task.title} {task.id}
-                               <input hidden={!this.state.isOpenInputField}></input>
+                               <input hidden={!this.state.isOpenInputField && this.state.selectedTaskId !== task.id}></input>
                            <button id='deleteTaskBut' onClick={() =>
                            {this.deleteOneTask(task.id)}}>delete task</button>
                            <button id='editTask' onClick={() =>
