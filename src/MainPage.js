@@ -11,13 +11,15 @@ class MainPage extends Component {
             isDisabled: false,
             selectedTaskId: null,
             inputValue: '',
-            isCanEdit: false
+            isCanEdit: false,
+            isDisabledEdit: false
         };
         this.createNewTask = this.createNewTask.bind(this);
         this.deleteOneTask = this.deleteOneTask.bind(this);
         this.deleteAll = this.deleteAll.bind(this);
         this.editTask = this.editTask.bind(this);
         this.changeTaskName = this.changeTaskName.bind(this)
+
     }
 
     componentDidMount() {
@@ -32,7 +34,11 @@ class MainPage extends Component {
         this.setState({selectedTaskId: id, inputValue: ''});
             this.setState({ isCanEdit: !this.state.isCanEdit});
 
-
+         if(this.state.selectedTaskId !== id) {
+             this.setState({isDisabledEdit: !this.state.isDisabledEdit})
+         } else {
+             this.setState({isDisabledEdit: false})
+         }
         if (this.state.isCanEdit) {
             updateTasks(taskChangedByInput, id, "true")
                 .then(() => getTasks()
@@ -91,7 +97,8 @@ class MainPage extends Component {
                     this.deleteOneTask(task.id)
                 }}>delete task
                 </button>
-                <button id='editTask' onClick={() => {
+                <button disabled={this.state.isDisabledEdit &&
+                this.state.selectedTaskId !== task.id} id='editTask' onClick={() => {
                     this.editTask(task.id)
                 }}>{this.state.selectedTaskId !== task.id ? 'edit' : 'submit'}
                 </button>
