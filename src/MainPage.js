@@ -12,7 +12,6 @@ class MainPage extends Component {
             selectedTaskId: null,
             inputValue: '',
             isCanEdit: false,
-            isDisabledEdit: false
         };
         this.createNewTask = this.createNewTask.bind(this);
         this.deleteOneTask = this.deleteOneTask.bind(this);
@@ -31,15 +30,13 @@ class MainPage extends Component {
 
     editTask(id) {
         var taskChangedByInput = this.state.inputValue;
-        this.setState({selectedTaskId: id, inputValue: '', isCanEdit: !this.state.isCanEdit, isDisabledEdit: false});
-
-        if (this.state.selectedTaskId !== id) {
-            this.setState({isDisabledEdit: !this.state.isDisabledEdit})
-        }
+        this.setState({selectedTaskId: id, inputValue: '', isCanEdit: true});
 
 
-            if (this.state.isCanEdit) {
-                this.setState({selectedTaskId: null, isDisabledEdit: !this.state.isDisabledEdit });
+
+
+        if (this.state.isCanEdit && this.state.selectedTaskId === id) {
+            this.setState({selectedTaskId: null, isCanEdit: false});
             updateTasks(taskChangedByInput, id, "true")
                 .then(() => getTasks()
                     .then((response) => {
@@ -81,7 +78,6 @@ class MainPage extends Component {
         event.preventDefault();
         this.setState({inputValue: event.target.value})
 
-
     }
 
 
@@ -96,10 +92,10 @@ class MainPage extends Component {
                     this.deleteOneTask(task.id)
                 }}>delete task
                 </button>
-                <button disabled={this.state.isDisabledEdit &&
-                this.state.selectedTaskId !== task.id} id='editTask' onClick={() => {
+                <button
+                        id='editTask' onClick={() => {
                     this.editTask(task.id)
-                }}>{this.state.selectedTaskId !== task.id || this.state.selectedTaskId === null? 'edit' : 'submit'}
+                }}>{this.state.selectedTaskId !== task.id ? 'edit' : 'submit'}
                 </button>
 
             </li>);
