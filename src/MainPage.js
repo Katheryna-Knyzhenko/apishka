@@ -31,15 +31,15 @@ class MainPage extends Component {
 
     editTask(id) {
         var taskChangedByInput = this.state.inputValue;
-        this.setState({selectedTaskId: id, inputValue: ''});
-            this.setState({ isCanEdit: !this.state.isCanEdit});
+        this.setState({selectedTaskId: id, inputValue: '', isCanEdit: !this.state.isCanEdit, isDisabledEdit: false});
 
-         if(this.state.selectedTaskId !== id) {
-             this.setState({isDisabledEdit: !this.state.isDisabledEdit})
-         } else {
-             this.setState({isDisabledEdit: false})
-         }
-        if (this.state.isCanEdit) {
+        if (this.state.selectedTaskId !== id) {
+            this.setState({isDisabledEdit: !this.state.isDisabledEdit})
+        }
+
+
+            if (this.state.isCanEdit) {
+                this.setState({selectedTaskId: null, isDisabledEdit: !this.state.isDisabledEdit });
             updateTasks(taskChangedByInput, id, "true")
                 .then(() => getTasks()
                     .then((response) => {
@@ -89,10 +89,9 @@ class MainPage extends Component {
 
         const mapping = this.state.tasks.map((task) =>
             <li key='task.id' className='taskList'>{task.title} {task.id}
-                {this.state.isCanEdit ? <input value={this.state.inputValue} onChange={this.changeTaskName}
-                       hidden={this.state.selectedTaskId !== task.id }>
-
-                </input> : null}
+                {this.state.isCanEdit && <input value={this.state.inputValue} onChange={this.changeTaskName}
+                                                hidden={this.state.selectedTaskId !== task.id}>
+                </input>}
                 <button id='deleteTaskBut' onClick={() => {
                     this.deleteOneTask(task.id)
                 }}>delete task
@@ -100,11 +99,10 @@ class MainPage extends Component {
                 <button disabled={this.state.isDisabledEdit &&
                 this.state.selectedTaskId !== task.id} id='editTask' onClick={() => {
                     this.editTask(task.id)
-                }}>{this.state.selectedTaskId !== task.id ? 'edit' : 'submit'}
+                }}>{this.state.selectedTaskId !== task.id || this.state.selectedTaskId === null? 'edit' : 'submit'}
                 </button>
 
             </li>);
-
 
 
         return (
